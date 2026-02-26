@@ -121,6 +121,164 @@ El desarrollador (Ángel) mantuvo siempre el control del código, revisando, cor
 
 ---
 
+### Commit 8 MULTIPLES CAMBIOS
+
+### Inicio de Interfaz Gráfica (GUI)
+Preguntas realizadas:
+-¿Cómo creo una interfaz gráfica en Python con tkinter?
+-¿Cómo conecto la GUI con mis funciones existentes?
+-¿Cómo organizo el código para no mezclar lógica y presentación?
+
+Aportes de la IA:
+-Explicó la estructura básica de una aplicación tkinter.
+-Generó la clase TipCalculatorGUI.
+-Mostró cómo crear:
+    Ventana principal.
+    Labels.
+    Entry fields.
+    Radiobuttons.
+    Botón de cálculo.
+-Ayudó a conectar la GUI con la función dividir_cuenta().
+-Explicó cada bloque de código generado.
+-Orientó en la separación entre lógica (services) y presentación (gui).
+
+### Modularización Completa del Proyecto
+Preguntas realizadas:
+-¿Cómo estructuro el proyecto de forma más profesional?
+-¿Cómo separo validaciones, servicios y utilidades?
+-¿Qué estructura usan los proyectos reales en Python?
+
+Aportes de la IA:
+-Propuso reorganizar el proyecto dentro de la carpeta src/.
+-Sugirió separar en:
+    services.py
+    validators.py
+    utils.py
+    menu.py
+    gui.py
+-Aplicó principios de separación de responsabilidades.
+-Refactorizó el código sin cambiar funcionalidad.
+-Mejoró nomenclaturas y claridad.
+-Aplicó conceptos básicos de Clean Code.
+
+### Historial de Cálculos en GUI
+Preguntas realizadas:
+-¿Cómo puedo guardar y mostrar un historial en tkinter?
+-¿Cómo funciona el widget Treeview?
+
+Aportes de la IA:
+-Explicó el uso de ttk.Treeview.
+-Implementó una tabla con columnas:
+    Monto
+    Propina
+    Total
+    Por persona
+-Mostró cómo insertar registros dinámicamente.
+-Mejoró la experiencia de usuario.
+-Explicó cómo organizar mejor los widgets en la ventana.
+
+### Integración de Gráficos con Matplotlib
+Preguntas realizadas:
+-¿Cómo integro matplotlib dentro de tkinter?
+-¿Cómo muestro un gráfico que se actualice cada vez que calculo?
+
+Aportes de la IA:
+-Explicó el uso de FigureCanvasTkAgg.
+-Generó el gráfico circular (pie chart).
+-Mostró cómo limpiar y redibujar el gráfico.
+-Ayudó a integrar visualización dinámica dentro de la GUI.
+-Explicó la estructura básica de matplotlib.
+
+### Selector de Modo (CLI / GUI)
+Preguntas realizadas:
+-¿Cómo puedo tener modo terminal y modo gráfico en el mismo proyecto?
+-¿Cómo detecto si hay consola disponible?
+-¿Cómo estructuro un main profesional?
+
+Aportes de la IA:
+-Diseñó main.py como punto de entrada principal.
+-Implementó selector de modo:
+    CLI
+    GUI
+-Explicó el uso de if __name__ == "__main__".
+-Orientó sobre detección de consola con sys.stdin.isatty().
+-Ayudó a corregir comportamientos inesperados en distintos entornos.
+-Refactorizó el main para hacerlo más estable.
+
+### Generación de Ejecutable (.exe)
+Preguntas realizadas:
+-¿Cómo convierto mi proyecto en un ejecutable?
+-¿Por qué mi .exe no abre al hacer doble clic?
+-¿Qué hace --windowed en PyInstaller?
+
+Aportes de la IA:
+-Explicó el uso de PyInstaller.
+-Ayudó a generar ejecutable con:
+    --onefile
+    --windowed
+-Detectó posibles problemas con matplotlib.
+-Propuso soluciones con --hidden-import.
+-Ayudó a depurar errores silenciosos.
+-Explicó diferencias entre ejecutar desde consola y entorno IDE.
+
+### Refactorización Final y Documentación
+Preguntas realizadas:
+-¿Puedes refactorizar el código aplicando Clean Code?
+-Añade docstrings sin cambiar la lógica.
+-¿Cómo dejo el proyecto listo para portfolio?
+
+Aportes de la IA:
+-Añadió docstrings profesionales.
+-Añadió type hints.
+-Mejoró organización de imports.
+-Simplificó estructuras sin alterar funcionalidad.
+-Mejoró nombres de funciones y claridad.
+-Ajustó el main para evitar problemas en desarrollo.
+-Ayudó a completar el README y documentación técnica.
+-Redactó mejoras estructurales para GitHub.
+
+
+### Commit 9 — Implementación de Testing Automatizado
+Preguntas realizadas:
+-¿Cómo escribo tests con pytest?
+-¿Cómo organizo una carpeta de testing profesional?
+-¿Cómo pruebo casos edge y validaciones?
+-¿Por qué aparece el error 'ModuleNotFoundError: No module named src'?
+-¿Cómo soluciono problemas de PYTHONPATH en pytest?
+
+Aportes de la IA:
+-Explicó cómo instalar y configurar pytest.
+-Ayudó a estructurar la carpeta test/.
+-Generó tests unitarios para:
+    dividir_cuenta()
+    formatear_moneda()
+    Validadores
+-Añadió pruebas para:
+    Valores negativos
+    Ceros
+    Entradas inválidas
+    Manejo de excepciones
+
+-Explicó cómo convertir src en paquete usando __init__.py.
+-Indicó cómo usar pytest.ini para configurar pythonpath.
+-Explicó buenas prácticas de ejecución de tests desde la raíz del proyecto.
+-Ayudó a interpretar errores de entorno y solucionarlos correctamente.
+
+### Validación Final del Proyecto
+
+El proyecto ahora cuenta con:
+
+-Código modular
+-Validaciones robustas
+-Manejo de errores
+-Formato correcto de moneda
+-Soporte para propina fija y porcentaje
+-Testing automatizado
+-Estructura profesional tipo proyecto real
+-Buenas prácticas aplicadas (Clean Code)
+
+
+
 # 🧠 Reflexión Final
 
 El uso de IA permitió:
@@ -132,9 +290,62 @@ El uso de IA permitió:
 
 El desarrollador mantuvo siempre el control del código, revisando y entendiendo cada parte del proceso.
 
+*Desde el Commit 8 hasta el estado actual, la IA ayudó a transformar el proyecto desde: Script de consola funcional*
+
+hasta:
+Aplicación de escritorio modular, con doble interfaz (CLI + GUI), historial dinámico, visualización gráfica y ejecutable distribuible.
+
+El desarrollador mantuvo el control total:
+-Revisando cada bloque generado.
+-Pidiendo explicaciones detalladas.
+-Ajustando el código a sus criterios.
+-Decidiendo estructura y organización final.
+-Solicitando refactorizaciones específicas sin alterar comportamiento.
+
+La IA actuó como asistente técnico y guía estructural, pero las decisiones finales y validaciones fueron realizadas por el desarrollador.
+
+*En el commit 9 implementación de Testing Automatizado*
+La IA no solo ayudó a generar código, sino que también:
+
+-Explicó cada bloque generado.
+-Justificó decisiones de arquitectura.
+-Detectó problemas de entorno.
+-Aplicó estándares profesionales de testing.
+-Simuló un entorno real de desarrollo profesional.
+
+El desarrollador mantuvo siempre el control total del proyecto, comprendiendo cada parte del código antes de integrarla.
+
 ---
 
-# 📌 Estado actual del proyecto
+# Evolución del Proyecto 
+
+El proyecto evolucionó desde:
+Script básico de consola
+
+hasta:
+Aplicación de escritorio modular con doble interfaz, historial dinámico y visualización gráfica integrada.
+
+Se aplicaron conceptos de:
+
+-Arquitectura modular.
+-Separación de responsabilidades.
+-Buenas prácticas de validación.
+-Diseño de interfaces gráficas.
+-Integración de librerías externas.
+-Empaquetado y distribución de software.
+
+# Estado Actual del Proyecto
+
+-Funcional
+-Modular
+-Escalable
+-Ejecutable
+-Documentado
+-Portfolio-ready
+-TestAutomatizado
+
+
+# Estado actual del proyecto
 
 El proyecto está completo hasta el Commit 7, con:
 
@@ -143,6 +354,16 @@ El proyecto está completo hasta el Commit 7, con:
 - Soporte para propina fija y porcentaje.
 - Formato de moneda.
 - Código limpio y organizado.
-
-Listo para avanzar al Commit 8 (menú interactivo).
-
+- El proyecto ahora incluye:
+- Interfaz en terminal (CLI).
+- Interfaz gráfica con tkinter.
+- Historial dinámico.
+- Visualización con matplotlib.
+- Modularización profesional.
+- Refactorización con Clean Code.
+- Ejecutable funcional.
+- Documentación completa.
+- Registro detallado de asistencia de IA.
+- Testing automatizado.
+- Licencia MIT.
+Proyecto finalizado y listo para portfolio profesional.
