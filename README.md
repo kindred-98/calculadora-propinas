@@ -116,72 +116,72 @@ python src/calculadora_propinas.py
 ### **Inicio de Interfaz Gráfica (GUI)**
 1) Creación de la clase TipCalculatorGUI.
 2) Implementación de ventana principal con tkinter.
-- Campos de entrada para:
+3) Campos de entrada para:
     - Monto total
     - Tipo de propina (porcentaje o fija)
-    * Valor de la propina
+    - Valor de la propina
     - Número de personas
 4) Botón de cálculo conectado a la lógica existente.
 5) Separación clara entre lógica (services.py) y presentación (gui.py).
 
 ### **Separación de Capas y Modularización**
--Creación de estructura modular dentro de src/:
-    services.py → lógica de negocio.
-    utils.py → utilidades (formateo de moneda).
-    validators.py → validaciones.   
-    menu.py → interfaz en terminal (CLI).
-    gui.py → interfaz gráfica.
--Implementación de arquitectura más escalable.
--Separación clara entre:
-    Lógica
-    Validaciones
-    Presentación
--Mejora en mantenibilidad del código.
+1) Creación de estructura modular dentro de src/:
+    - services.py → lógica de negocio.
+    - utils.py → utilidades (formateo de moneda).
+    - validators.py → validaciones.   
+    - menu.py → interfaz en terminal (CLI).
+    - gui.py → interfaz gráfica.
+2) Implementación de arquitectura más escalable.
+3) Separación clara entre:
+    - Lógica
+    - Validaciones
+    - Presentación
+4) Mejora en mantenibilidad del código.
 
 ### **Historial de Cálculos**
--Implementación de Treeview (ttk) para mostrar historial.
--Cada cálculo se almacena en tabla con:
-    Monto
-    Propina
-    Total
-    Total por persona
--Mejora de experiencia de usuario.
+1) Implementación de Treeview (ttk) para mostrar historial.
+2) Cada cálculo se almacena en tabla con:
+    - Monto
+    - Propina
+    - Total
+    - Total por persona
+3) Mejora de experiencia de usuario.
 
 ### **Visualización con Gráfico**
--Integración de matplotlib con tkinter.
--Implementación de gráfico circular (pie chart).
--Visualización de:
-    Monto base
-    Propina
--Actualización dinámica del gráfico tras cada cálculo.
--Integración mediante FigureCanvasTkAgg.
+1) Integración de matplotlib con tkinter.
+2) Implementación de gráfico circular (pie chart).
+3) Visualización de:
+   - Monto base
+   - Propina
+4) Actualización dinámica del gráfico tras cada cálculo.
+5) Integración mediante FigureCanvasTkAgg.
 
 ### **Selector de Modo (CLI / GUI)**
--Creación de main.py como punto de entrada principal.
--Detección automática de entorno:
-    Si hay consola → menú CLI/GUI.
-    Si no hay consola → apertura directa de GUI.
--Posibilidad de ejecutar:
--Modo Terminal.
--Modo Gráfico.
--Mejora en flexibilidad del programa.
+1) Creación de main.py como punto de entrada principal.
+2) Detección automática de entorno:
+   - Si hay consola → menú CLI/GUI.
+   - Si no hay consola → apertura directa de GUI.
+3) Posibilidad de ejecutar:
+4) Modo Terminal.
+5) Modo Gráfico.
+6) Mejora en flexibilidad del programa.
 
 ### **Ejecutable (.exe)**
--Generación de ejecutable mediante PyInstaller.
--Compatibilidad con modo --windowed.
--Ajustes para evitar errores silenciosos.
--Aplicación ejecutable sin necesidad de entorno Python instalado.
+1) Generación de ejecutable mediante PyInstaller.
+2) Compatibilidad con modo --windowed.
+3) Ajustes para evitar errores silenciosos.
+4) Aplicación ejecutable sin necesidad de entorno Python instalado.
 
 ### **Refactorización y Documentación Interna**
 
--Añadido de docstrings en:
-    GUI
-    Entry points
-    Funciones principales
--Mejora de legibilidad.
--Añadido de type hints.
--Limpieza de estructura sin alterar funcionalidad.
--Código preparado para portfolio profesional.
+1) Añadido de docstrings en:
+    - GUI
+    - Entry points
+    - Funciones principales
+4) Mejora de legibilidad.
+5) Añadido de type hints.
+6) Limpieza de estructura sin alterar funcionalidad.
+7) Código preparado para portfolio profesional.
 
 ## Casos de Prueba Recomendados
 
@@ -199,16 +199,16 @@ python src/calculadora_propinas.py
 
 Implementacion de pruebas automatizadas utilizando pytest para garantizar la robustez y calidad del proyecto.
 
-Cobertura de pruebas
+1) Cobertura de pruebas
 Se añadieron tests para:
 
--Funciones de servicios (dividir_cuenta)
--Funciones de utilidades (formatear_moneda)
--Validadores de entrada
--Casos edge (valores negativos, cero, entradas inválidas)
--Manejo correcto de excepciones (ValueError)
+- Funciones de servicios (dividir_cuenta)
+- Funciones de utilidades (formatear_moneda)
+- Validadores de entrada
+- Casos edge (valores negativos, cero, entradas inválidas)
+- Manejo correcto de excepciones (ValueError)
 
-Estructura de testing
+2) Estructura de testing
 calculadora-propinas/
 ```
 │
@@ -223,9 +223,8 @@ calculadora-propinas/
 │   ├── test_validators.py
 ```
 
-Cómo ejecutar los tests
-Desde la raíz del proyecto:
-python -m pytest o simplemente: pytest
+3) Cómo ejecutar los tests
+Desde la raíz del proyecto: python -m pytest o simplemente: pytest
 
 ## Objetivo Educativo
 
