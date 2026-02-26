@@ -16,11 +16,14 @@ def validar_personas(personas):
     if personas <= 0 or not isinstance(personas, int):
         raise ValueError("El número de personas debe ser un entero positivo.")
 
+#Formatea un número como moneda con dos decimales.
+def formatear_moneda(valor): 
+    return f"${valor:.2f}"
 
 def calcular_propina_porcentaje(monto, porcentaje):
     validar_monto(monto)
     validar_porcentaje(porcentaje)
-    return monto * (porcentaje / 100)
+    return round(monto * (porcentaje / 100), 2)
 
 
 def dividir_cuenta(monto, porcentaje, personas):
@@ -29,8 +32,8 @@ def dividir_cuenta(monto, porcentaje, personas):
     validar_personas(personas)
 
     propina = calcular_propina_porcentaje(monto, porcentaje)
-    total = monto + propina
-    por_persona = total / personas
+    total = round(monto + propina, 2)
+    por_persona = round(total / personas, 2)
 
     return {
         "propina": propina,
@@ -49,9 +52,9 @@ if __name__ == "__main__":
         resultado = dividir_cuenta(monto, porcentaje, personas)
 
         print("\nResultados:")
-        print("Propina:", resultado["propina"])
-        print("Total:", resultado["total"])
-        print("Por persona:", resultado["por_persona"])
+        print("Propina:", formatear_moneda(resultado["propina"]))
+        print("Total:", formatear_moneda(resultado["total"]))
+        print("Por persona:", formatear_moneda(resultado["por_persona"]))
 
     except ValueError as e:
         print("Error:", e)
