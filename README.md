@@ -1,3 +1,10 @@
+![Python](https://img.shields.io/badge/Python-3.14-blue?style=for-the-badge&logo=python)
+![Pytest](https://img.shields.io/badge/Testing-pytest-green?style=for-the-badge&logo=pytest)
+![Clean Code](https://img.shields.io/badge/Code-Clean-blueviolet?style=for-the-badge)
+![CLI](https://img.shields.io/badge/Interface-CLI-lightgrey?style=for-the-badge)
+![GUI](https://img.shields.io/badge/Interface-GUI-yellow?style=for-the-badge)
+![License](https://img.shields.io/badge/License-MIT-purple?style=for-the-badge)
+
 # Calculadora de Propinas  
 Proyecto educativo desarrollado en Python para practicar programación, control de versiones con Git y uso de herramientas de IA. La aplicación permite calcular propinas, dividir cuentas entre varias personas y manejar diferentes tipos de propina (porcentaje o monto fijo).
 
