@@ -1,6 +1,7 @@
+# src/gui.py
+
 import tkinter as tk
-from tkinter import messagebox
-from tkinter import ttk
+from tkinter import messagebox, ttk
 
 from .services import dividir_cuenta
 from .utils import formatear_moneda
@@ -10,8 +11,23 @@ import matplotlib.pyplot as plt
 
 
 class TipCalculatorGUI:
+    """
+    Interfaz gráfica de la aplicación Calculadora de Propinas.
 
-    def __init__(self, root):
+    Permite:
+    - Ingresar datos de la cuenta.
+    - Calcular propina por porcentaje o fija.
+    - Visualizar resultados en tabla (historial).
+    - Mostrar gráfico de distribución del pago.
+    """
+
+    def __init__(self, root: tk.Tk) -> None:
+        """
+        Inicializa la ventana principal y configura estilos y widgets.
+
+        Args:
+            root (tk.Tk): Ventana raíz de Tkinter.
+        """
         self.root = root
         self.root.title("Calculadora de Propina")
         self.root.geometry("900x650")
@@ -30,7 +46,11 @@ class TipCalculatorGUI:
     # ESTILOS
     # ==========================
 
-    def configurar_estilos(self):
+    def configurar_estilos(self) -> None:
+        """
+        Configura los estilos visuales de la aplicación,
+        incluyendo soporte para modo claro y oscuro.
+        """
         if self.dark_mode:
             bg = "#1e1e1e"
             fg = "white"
@@ -47,16 +67,23 @@ class TipCalculatorGUI:
     # WIDGETS
     # ==========================
 
-    def crear_widgets(self):
-
+    def crear_widgets(self) -> None:
+        """
+        Crea y organiza todos los componentes visuales de la interfaz.
+        """
         main_frame = ttk.Frame(self.root, padding=20)
         main_frame.pack(fill="both", expand=True)
 
-        ttk.Label(main_frame,
-                  text="💰 Calculadora de Propina",
-                  font=("Segoe UI", 16, "bold")).pack(pady=10)
+        ttk.Label(
+            main_frame,
+            text="💰 Calculadora de Propina",
+            font=("Segoe UI", 16, "bold")
+        ).pack(pady=10)
 
+        # --------------------------
         # INPUTS
+        # --------------------------
+
         ttk.Label(main_frame, text="Monto total:").pack(anchor="w")
         self.monto_entry = ttk.Entry(main_frame)
         self.monto_entry.pack(fill="x", pady=5)
@@ -65,13 +92,19 @@ class TipCalculatorGUI:
 
         self.tipo_var = tk.StringVar(value="porcentaje")
 
-        ttk.Radiobutton(main_frame, text="Porcentaje",
-                        variable=self.tipo_var,
-                        value="porcentaje").pack(anchor="w")
+        ttk.Radiobutton(
+            main_frame,
+            text="Porcentaje",
+            variable=self.tipo_var,
+            value="porcentaje"
+        ).pack(anchor="w")
 
-        ttk.Radiobutton(main_frame, text="Fija",
-                        variable=self.tipo_var,
-                        value="fija").pack(anchor="w")
+        ttk.Radiobutton(
+            main_frame,
+            text="Fija",
+            variable=self.tipo_var,
+            value="fija"
+        ).pack(anchor="w")
 
         ttk.Label(main_frame, text="Valor:").pack(anchor="w")
         self.valor_entry = ttk.Entry(main_frame)
@@ -81,24 +114,30 @@ class TipCalculatorGUI:
         self.personas_entry = ttk.Entry(main_frame)
         self.personas_entry.pack(fill="x", pady=5)
 
-        ttk.Button(main_frame,
-                   text="Calcular",
-                   command=self.calcular).pack(pady=10)
+        ttk.Button(
+            main_frame,
+            text="Calcular",
+            command=self.calcular
+        ).pack(pady=10)
 
-        # ==========================
+        # --------------------------
         # HISTORIAL
-        # ==========================
+        # --------------------------
 
-        ttk.Label(main_frame,
-                  text="📜 Historial",
-                  font=("Segoe UI", 12, "bold")).pack(pady=10)
+        ttk.Label(
+            main_frame,
+            text="📜 Historial",
+            font=("Segoe UI", 12, "bold")
+        ).pack(pady=10)
 
         columnas = ("Monto", "Propina", "Total", "Por Persona")
 
-        self.tree = ttk.Treeview(main_frame,
-                                 columns=columnas,
-                                 show="headings",
-                                 height=6)
+        self.tree = ttk.Treeview(
+            main_frame,
+            columns=columnas,
+            show="headings",
+            height=6
+        )
 
         for col in columnas:
             self.tree.heading(col, text=col)
@@ -106,54 +145,71 @@ class TipCalculatorGUI:
 
         self.tree.pack()
 
-        # ==========================
+        # --------------------------
         # GRÁFICO
-        # ==========================
+        # --------------------------
 
         self.fig, self.ax = plt.subplots(figsize=(4, 4))
         self.canvas = FigureCanvasTkAgg(self.fig, master=main_frame)
         self.canvas.get_tk_widget().pack(pady=10)
 
     # ==========================
-    # FUNCIONES
+    # FUNCIONALIDAD
     # ==========================
 
-    def actualizar_grafico(self, monto, propina):
+    def actualizar_grafico(self, monto: float, propina: float) -> None:
+        """
+        Actualiza el gráfico circular mostrando la distribución
+        entre monto base y propina.
 
+        Args:
+            monto (float): Importe original.
+            propina (float): Monto de la propina calculada.
+        """
         self.ax.clear()
 
         valores = [monto, propina]
         etiquetas = ["Monto", "Propina"]
 
-        self.ax.pie(valores,
-                    labels=etiquetas,
-                    autopct="%1.1f%%")
+        self.ax.pie(
+            valores,
+            labels=etiquetas,
+            autopct="%1.1f%%"
+        )
 
         self.ax.set_title("Distribución del Pago")
-
         self.canvas.draw()
 
-    def calcular(self):
+    def calcular(self) -> None:
+        """
+        Obtiene los valores ingresados por el usuario,
+        realiza el cálculo y actualiza historial y gráfico.
+
+        Maneja errores mostrando mensajes emergentes.
+        """
         try:
-            monto = float(self.monto_entry.get())
+            monto = float(self.monto_entry.get().strip())
             tipo = self.tipo_var.get()
-            valor = float(self.valor_entry.get())
-            personas = int(self.personas_entry.get())
+            valor = float(self.valor_entry.get().strip())
+            personas = int(self.personas_entry.get().strip())
 
             resultado = dividir_cuenta(monto, tipo, valor, personas)
 
-            # Agregar a historial
-            self.tree.insert("",
-                             tk.END,
-                             values=(
-                                 formatear_moneda(monto),
-                                 formatear_moneda(resultado["propina"]),
-                                 formatear_moneda(resultado["total"]),
-                                 formatear_moneda(resultado["por_persona"])
-                             ))
+            self.tree.insert(
+                "",
+                tk.END,
+                values=(
+                    formatear_moneda(monto),
+                    formatear_moneda(resultado["propina"]),
+                    formatear_moneda(resultado["total"]),
+                    formatear_moneda(resultado["por_persona"])
+                )
+            )
 
-            # Actualizar gráfico
             self.actualizar_grafico(monto, resultado["propina"])
 
+        except ValueError as e:
+            messagebox.showerror("Error de entrada", str(e))
+
         except Exception as e:
-            messagebox.showerror("Error", str(e))
+            messagebox.showerror("Error inesperado", "Ocurrió un error interno.")

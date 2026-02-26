@@ -1,7 +1,5 @@
 # main_gui.py
 
-# main_gui.py
-
 import tkinter as tk
 from src.gui import TipCalculatorGUI
 import traceback

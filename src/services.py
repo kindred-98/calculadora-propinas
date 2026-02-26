@@ -1,4 +1,4 @@
-# services.py
+# src/services.py
 
 from .validators import (
     validar_monto,
@@ -7,28 +7,83 @@ from .validators import (
     validar_personas
 )
 
-def calcular_propina_porcentaje(monto, porcentaje):
+
+def calcular_propina_porcentaje(monto: float, porcentaje: float) -> float:
+    """
+    Calcula la propina basada en un porcentaje del monto total.
+
+    Args:
+        monto (float): Importe total de la cuenta.
+        porcentaje (float): Porcentaje de propina a aplicar.
+
+    Returns:
+        float: Monto de la propina calculada, redondeada a 2 decimales.
+    """
     validar_monto(monto)
     validar_porcentaje(porcentaje)
-    return round(monto * (porcentaje / 100), 2)
+
+    propina = monto * (porcentaje / 100)
+    return round(propina, 2)
 
 
-def calcular_propina_fija(monto, propina_fija):
+def calcular_propina_fija(monto: float, propina_fija: float) -> float:
+    """
+    Devuelve una propina fija validada.
+
+    Args:
+        monto (float): Importe total de la cuenta.
+        propina_fija (float): Cantidad fija de propina.
+
+    Returns:
+        float: Monto de la propina fija redondeada a 2 decimales.
+    """
     validar_monto(monto)
     validar_propina_fija(propina_fija)
+
     return round(propina_fija, 2)
 
 
-def calcular_propina(monto, tipo, valor):
+def calcular_propina(monto: float, tipo: str, valor: float) -> float:
+    """
+    Determina el tipo de propina (porcentaje o fija) y la calcula.
+
+    Args:
+        monto (float): Importe total de la cuenta.
+        tipo (str): Tipo de propina ('porcentaje' o 'fija').
+        valor (float): Valor correspondiente al tipo de propina.
+
+    Returns:
+        float: Monto de la propina calculada.
+
+    Raises:
+        ValueError: Si el tipo de propina no es válido.
+    """
     if tipo == "porcentaje":
         return calcular_propina_porcentaje(monto, valor)
-    elif tipo == "fija":
+
+    if tipo == "fija":
         return calcular_propina_fija(monto, valor)
-    else:
-        raise ValueError("Tipo de propina inválido.")
+
+    raise ValueError("Tipo de propina inválido. Debe ser 'porcentaje' o 'fija'.")
 
 
-def dividir_cuenta(monto, tipo, valor, personas):
+def dividir_cuenta(monto: float, tipo: str, valor: float, personas: int) -> dict:
+    """
+    Calcula la propina, el total final y cuánto debe pagar cada persona.
+
+    Args:
+        monto (float): Importe total de la cuenta.
+        tipo (str): Tipo de propina ('porcentaje' o 'fija').
+        valor (float): Valor correspondiente al tipo de propina.
+        personas (int): Número de personas para dividir la cuenta.
+
+    Returns:
+        dict: Diccionario con:
+            - 'propina': Monto de la propina.
+            - 'total': Total final incluyendo propina.
+            - 'por_persona': Importe que debe pagar cada persona.
+    """
+    validar_monto(monto)
     validar_personas(personas)
 
     propina = calcular_propina(monto, tipo, valor)
