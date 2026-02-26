@@ -34,3 +34,35 @@ Este proyecto forma parte de un ejercicio práctico para aprender:
 - Validaciones de entrada.
 - Interfaz interactiva en terminal.
 
+
+
+QUÉ HACE CADA BLOQUE DE CÓDIGO
+1. VALIDACIONES
+Funciones que aseguran que los datos sean correctos antes de calcular nada:
+monto > 0
+porcentaje >= 0
+propina fija >= 0
+personas entero positivo
+
+2. UTILIDADES
+Funciones auxiliares:
+formatear_moneda() → convierte números a formato $12.34
+
+3. CÁLCULO DE PROPINAS
+Tres funciones:
+porcentaje
+fija
+función unificada que decide cuál usar
+
+4. DIVISIÓN DE LA CUENTA
+Calcula:
+propina
+total
+total por persona
+Devuelve un diccionario limpio.
+
+5. PRUEBAS MANUALES
+Simula el menú del commit 8 pero sin bucle:
+pide datos
+calcula
+muestra resultados
