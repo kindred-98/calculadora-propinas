@@ -16,6 +16,5 @@ def main():
             f.write(traceback.format_exc())
         sys.exit(1)
 
-
 if __name__ == "__main__":
     main()
