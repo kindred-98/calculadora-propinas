@@ -29,8 +29,3 @@ jobs:
     
     - name: Ejecutar tests
       run: pytest tests/ -v
-    
-    - name: Analizar código con IA (Codacy/SonarCloud)
-      uses: codacy/codacy-analysis-cli-action@master
-      with:
-        project-token: ${{ secrets.CODACY_PROJECT_TOKEN }}

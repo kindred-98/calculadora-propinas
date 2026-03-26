@@ -42,6 +42,20 @@ class TipCalculatorGUI:
         self.configurar_estilos()
         self.crear_widgets()
 
+        # Al cerrar con la X devolver el control al terminal,
+        # no matar el proceso entero.
+        self.root.protocol("WM_DELETE_WINDOW", self._cerrar_ventana)
+
+    def _cerrar_ventana(self) -> None:
+        """
+        Manejador del botón X de la ventana.
+
+        Cierra las figuras de matplotlib y destruye la ventana,
+        devolviendo el control al menú del terminal.
+        """
+        plt.close("all")
+        self.root.destroy()
+
     # ==========================
     # ESTILOS
     # ==========================
@@ -180,36 +194,32 @@ class TipCalculatorGUI:
         self.ax.set_title("Distribución del Pago")
         self.canvas.draw()
 
-    def calcular(self) -> None:
-        """
-        Obtiene los valores ingresados por el usuario,
-        realiza el cálculo y actualiza historial y gráfico.
-
-        Maneja errores mostrando mensajes emergentes.
-        """
+    def calcular(self):
         try:
-            monto = float(self.monto_entry.get().strip())
+            monto = float(self.monto_entry.get())
             tipo = self.tipo_var.get()
-            valor = float(self.valor_entry.get().strip())
-            personas = int(self.personas_entry.get().strip())
+            valor = float(self.valor_entry.get())
+            personas = int(self.personas_entry.get())
 
             resultado = dividir_cuenta(monto, tipo, valor, personas)
 
+            # Insertar en historial
             self.tree.insert(
                 "",
-                tk.END,
+                "end",
                 values=(
                     formatear_moneda(monto),
                     formatear_moneda(resultado["propina"]),
                     formatear_moneda(resultado["total"]),
-                    formatear_moneda(resultado["por_persona"])
-                )
+                    formatear_moneda(resultado["por_persona"]),
+                ),
             )
 
+            # Actualizar gráfico
             self.actualizar_grafico(monto, resultado["propina"])
 
-        except ValueError as e:
-            messagebox.showerror("Error de entrada", str(e))
+        except ValueError:
+            messagebox.showerror("Error de entrada", "Datos inválidos")
 
-        except Exception as e:
-            messagebox.showerror("Error inesperado", "Ocurrió un error interno.")
+        except Exception:
+            messagebox.showerror("Error inesperado", "Ocurrió un error interno")

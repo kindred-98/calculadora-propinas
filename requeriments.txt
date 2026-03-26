@@ -1,6 +1,0 @@
-colorama
-pytest==9.0.2
-pyinstaller==6.19.0
-pytest
-matplotlib==3.8.0
-pylint==3.0.0
