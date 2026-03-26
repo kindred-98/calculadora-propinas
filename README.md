@@ -1,3 +1,6 @@
+
+<div align="center"> 
+
 # 💰 Calculadora de Propinas
 
 **Calculadora de propinas y división de cuentas desarrollada en Python**  
@@ -13,6 +16,8 @@
 [![CLI](https://img.shields.io/badge/Interface-CLI-lightgrey?style=for-the-badge)](https://github.com/kindred-98)
 [![GUI](https://img.shields.io/badge/Interface-GUI-orange?style=for-the-badge)](https://github.com/kindred-98)
 [![License](https://img.shields.io/badge/License-MIT-purple?style=for-the-badge)](LICENSE)
+
+</div>
 
 ---
 
@@ -90,21 +95,21 @@ El proyecto creció de forma incremental a lo largo de 9 commits documentados:
 ┌────────────────────────────────────────────────────────────────┐
 │                    Calculadora de Propinas                     │
 │                                                                │
-│  ┌─────────────────┐        ┌──────────────────────────────┐  │
-│  │    main.py      │        │           src/               │  │
-│  │                 │        │                              │  │
-│  │  Detecta        │───────►│  menu.py     → CLI           │  │
-│  │  entorno        │        │  gui.py      → GUI tkinter   │  │
-│  │  CLI / GUI      │        └──────────────────────────────┘  │
-│  └─────────────────┘                     │                    │
-│                                          ▼                    │
-│  ┌──────────────────────────────────────────────────────────┐ │
-│  │                    Capa de lógica                        │ │
-│  │                                                          │ │
-│  │  services.py   → calcular_propina · dividir_cuenta       │ │
-│  │  validators.py → validación de entradas                  │ │
-│  │  utils.py      → formatear_moneda · redondeo             │ │
-│  └──────────────────────────────────────────────────────────┘ │
+│  ┌─────────────────┐        ┌──────────────────────────────┐   │
+│  │    main.py      │        │           src/               │   │
+│  │                 │        │                              │   │
+│  │  Detecta        │───────►│  menu.py     → CLI           │   │
+│  │  entorno        │        │  gui.py      → GUI tkinter   │   │
+│  │  CLI / GUI      │        └──────────────────────────────┘   │
+│  └─────────────────┘                     │                     │
+│                                          ▼                     │
+│  ┌──────────────────────────────────────────────────────────┐  │
+│  │                    Capa de lógica                        │  │
+│  │                                                          │  │
+│  │  services.py   → calcular_propina · dividir_cuenta       │  │
+│  │  validators.py → validación de entradas                  │  │
+│  │  utils.py      → formatear_moneda · redondeo             │  │
+│  └──────────────────────────────────────────────────────────┘  │
 └────────────────────────────────────────────────────────────────┘
 ```
 
@@ -295,6 +300,8 @@ calculadora-propinas/
 
 ---
 
+<div align="center"> 
+
 ## 👨‍💻 Autor
 
 **A.D.E.V.**
@@ -316,3 +323,4 @@ Este proyecto está distribuido bajo la licencia **MIT**.
 
 ⭐ Si este proyecto te resulta útil, considera dejarle una estrella en GitHub
 
+</div>
