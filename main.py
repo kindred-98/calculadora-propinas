@@ -10,7 +10,7 @@ def iniciar_gui() -> None:
     Inicializa y ejecuta la interfaz gráfica (GUI).
     """
     root = tk.Tk()
-    app = TipCalculatorGUI(root)
+    _app = TipCalculatorGUI(root)
     root.mainloop()
 
 
